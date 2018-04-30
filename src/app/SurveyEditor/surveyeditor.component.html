@@ -1,0 +1,145 @@
+<div *ngIf="isLoading" class="loaderContainer">
+    <div class="spincontainer">
+        <div class="spinner"></div>
+    </div>
+</div>
+
+<!-- <input type="button" value="Test" (click)="TestFunction($event)"> -->
+
+<nav id="nHeader" class="navbar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <img height="60px" width="227px" style="margin: 5px 10px;" src="assets\images\MainLogo.png" alt="Logo" />
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active">
+                <div class="SurveyTitle">{{surveyTitle}}</div>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li style="padding: 10px;">
+                <a href="{{backUrl}}" class="btn btn-success nbtn nbtn-primary" style="padding: 10px 15px;">
+                    <i class="glyphicon glyphicon-arrow-left" aria-hidden="true"></i> Back to Form List</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- <div class="row" style="background-color:#f3f3f4;padding: 15px;margin: 0;border: none;position: relative; margin-bottom: -57px;">
+    <div class="col-lg-2 col-md-2 col-sm-1 col-xs-1 svd_toolbox">&nbsp;</div>    
+    <div class="col-xs-11 svd_editors col-lg-10 col-md-10 col-sm-11">
+        <span style="margin-right: 7px;">
+            <button type="button" class="btn btn-primary nbtn-small nbtn nbtn-primary">Survey Preview</button>
+        </span>
+        <span style="margin-right: 7px;">
+            <button type="button" class="btn btn-primary nbtn-small nbtn nbtn-primary">Layout</button>
+        </span>
+    </div>  
+</div> -->
+
+<survey-editor [json]="json" (onQuestionAdded)="questionAdded($event)" (onQuestionModified)="questionModified($event)" (onQuestionRemoved)="questionDeleted($event)"
+    (onQuestionChangeOrder)="questionOrderChanged($event)" (onLayoutClick)="LayoutButton_Click($event)" 
+    (onSaveSurveyDetails)="saveSurveyDetails($event)">
+</survey-editor>
+
+<!-- <simple-notifications [options]="options"></simple-notifications> -->
+
+<div class="modal fade" id="modalLayout" tabindex="-1" role="dialog" aria-labelledby="modalSurveyLabel">
+    <div class="modal-dialog modal-ku" role="document">
+        <div class="modal-content">
+            <form class="form-horizontal">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="modalSurveyLabel">Survey Layout</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="surveyContainerInPopup">
+                        <div class="tabbable-panel">
+                            <div class="tabbable-line">
+                                <ul class="nav nav-tabs ">
+                                    <li class="active">
+                                        <a href="#tab_default_1" data-toggle="tab">CSS Template File</a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab_default_2" data-toggle="tab">Upload File</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="tab_default_1">
+                                        <div class="form-group">
+                                            <div class="alert alert-danger" *ngIf="this.LayoutFormData.ErrorMessage.length > 0">
+                                                <strong>Error! </strong> {{this.LayoutFormData.ErrorMessage}}.
+                                            </div>
+                                            <div class="alert alert-success" *ngIf="this.LayoutFormData.SuccessMessage.length > 0">
+                                                <strong>Success! </strong> {{this.LayoutFormData.SuccessMessage}}.
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-3" for="email">Css template File:</label>
+                                            <div class="col-sm-9">
+                                                <select name="ddlLayoutCss" class="form-control" [(ngModel)]="LayoutFormData.LayoutCss" (ngModelChange)="onChangeCSS($event)">
+                                                        <option *ngFor="let item of lstLayoutCSS" [value]="item.value"
+                                                        [attr.selected]="item.selected== true ? true : null" >{{item.text}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group"> 
+                                            <div class="col-sm-offset-3 col-sm-9">
+                                                <div class="pull-right">
+                                                    <button type="button" class="btn btn-primary nbtn nbtn-primary" (click)="EditCSS_click()">Edit</button>
+                                                    <button type="button" class="btn btn-primary nbtn nbtn-primary" (click)="DeleteCSS_click()">Delete</button>
+                                                    <button type="button" class="btn btn-primary nbtn nbtn-primary" (click)="DownloadCSS_click()">Download</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" *ngIf="LayoutFormData.isEditCss == true"> 
+                                            <label class="control-label col-sm-3" for="email">Edit CSS:</label>
+                                            <div class="col-sm-9">
+                                                <textarea name="txtEditCss" [(ngModel)]="LayoutFormData.EditCss" cols="20" rows="10" class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group"> 
+                                            <div class="col-sm-offset-3 col-sm-9">
+                                                <button type="button" *ngIf="this.LayoutFormData.isEditCss == true" class="btn btn-primary nbtn nbtn-primary" (click)="SaveEditCSS_click()">Update</button>
+                                                <button type="button" *ngIf="this.LayoutFormData.isEditCss == true" class="btn btn-default nbtn" (click)="EdirCancel_click()">Cancel</button>
+                                                
+                                                <button type="button" *ngIf="this.LayoutFormData.isEditCss == false" class="btn btn-primary nbtn nbtn-primary" (click)="SaveLayout_click()">Save</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="tab_default_2">
+                                        <div class="form-group">
+                                            <div class="alert alert-danger" *ngIf="this.LayoutFormData.ErrorMessageUpload.length > 0">
+                                                <strong>Error! </strong> {{this.LayoutFormData.ErrorMessageUpload}}.
+                                            </div>
+                                            <div class="alert alert-success" *ngIf="this.LayoutFormData.SuccessUploadMessage.length > 0">
+                                                <strong>Success! </strong> {{this.LayoutFormData.SuccessUploadMessage}}.
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-3" for="pwd">Select File:</label>
+                                            <div class="col-sm-9">
+                                                <input #fuUploadCSS type="file" name="fuCss" style="width: 100%;padding: 8px 0;" (change)="fileChange($event)" placeholder="Upload file" accept=".css" >
+                                            </div>
+                                        </div>
+                                        <div class="form-group"> 
+                                            <div class="col-sm-offset-3 col-sm-9">
+                                                <button type="button" class="btn btn-primary nbtn nbtn-primary" (click)="Upload_click()">Upload</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-default nbtn" data-dismiss="modal">Close</button>
+                </div> -->
+            </form>
+ 
+        </div>
+    </div>
+</div>

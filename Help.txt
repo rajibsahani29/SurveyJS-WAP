@@ -1,0 +1,15 @@
+#Run
+  ng serve
+	
+#Production Publish
+	ng build --prod --base-href .
+	
+#VM Publish 
+	ng build --env=vm --base-href .
+
+#Local Publish 
+	ng build --base-href .
+	
+#Install Plugins in SurveyJS
+	npm i --save jquery
+	

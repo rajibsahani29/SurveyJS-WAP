@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>iAspire</title>
+  
+  <!-- <link rel="icon" type="image/x-icon" href="assets/images/iAspireLogo.ico"> -->
+  <link rel="shortcut icon" type="image/x-icon" sizes="16x16 32x32 48x48 192x192 256x256" href="favicon.ico">
+  <script src="https://cdn.ckeditor.com/4.5.1/standard/ckeditor.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script>
+    //var CKEDITOR_BASEPATH = '/ckeditor_path/';
+  </script>
+  <style>
+      .spincontainer {
+        width: 60px; height: 60px;
+        position: absolute;
+        top: 0;left: 0;bottom: 60px;right: 0;
+        margin: auto;
+        -webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;
+        user-select: none;
+      }
+      .spinner {
+        width: 40px;
+        height: 40px;
+        background-color: #00a8c5;
+        margin: 40px auto;
+        -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+        animation: sk-rotateplane 1.2s infinite ease-in-out;
+      }
+      
+      @-webkit-keyframes sk-rotateplane {
+        0% { -webkit-transform: perspective(120px) }
+        50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+        100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+      }
+      
+      @keyframes sk-rotateplane {
+        0% { 
+          transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+          -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg) 
+        } 50% { 
+          transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+          -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg) 
+        } 100% { 
+          transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+          -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+        }
+      }
+  </style>
+ 
+</head>
+<body>
+  <app-root>
+    <div class="spincontainer">
+        <div class="spinner"></div>
+    </div>
+  </app-root>
+</body>
+</html>

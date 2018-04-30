@@ -1,0 +1,43 @@
+#surveyEditorContainer .editor-tabs { display: none !important; } 
+#nHeader {margin-bottom: 0;border-radius: 0;border-bottom: 1px solid #f3f3f4;border-top: 0;}
+#nHeader .navbar-header {margin-left: -15px;background-color: #92e3f2;}
+#nHeader .SurveyTitle {padding: 20px 10px 10px 20px;font-size: 20px;font-weight: bold;}
+#nHeader .navbar-right .btn-success:hover {background-color:#489048; }
+#nHeader .navbar-right .btn-success:focus {background-color:#489048; }
+
+
+.col-lg-2.col-md-2.col-sm-1.col-xs-1.svd_toolbox { overflow-y: auto; height: 82vh;}
+.panel.card.svd_content { padding-top: 10px; padding-bottom: 2px; }
+
+/* LOADING CLASS */
+.loaderContainer {background-color: #ffffffe6 ;z-index: 1100;position: fixed;width: 100%;height: 100%; }
+
+/* Button Style */
+.nbtn {   border-radius: 2px;  padding: 0.6em 1em;  font-size: 1em;  line-height: 1em;  min-width: 6em; }
+.nbtn-primary {  background-color: #1ab394 !important;  border-color: #1ab394 !important; }
+.nbtn-primary:active { color: #fff;  background-color: #204d74 !important; border-color: #122b40 !important; }
+.nbtn-small {  font-size: 0.85em !important;  font-weight: bold !important; }
+
+/* Layout Modal  Style */
+.modal-ku {   width: 750px;  margin: 40px auto; }
+#modalLayout .modal-body {   padding: 0px !important; }
+
+/* TAB Style */
+.tabbable-panel {  border:1px solid #eee;  /*padding: 10px;*/ }
+.tabbable-line > .nav-tabs {   border: none;  margin: 0px;  background-color: #f9f9f9;}
+.tabbable-line > .nav-tabs > li {   margin-right: 2px;}
+.tabbable-line > .nav-tabs > li > a {   border: 0;  margin-right: 0;  color: #737373;}
+.tabbable-line > .nav-tabs > li > a > i {   color: #a6a6a6;}
+.tabbable-line > .nav-tabs > li.open, .tabbable-line > .nav-tabs > li:hover {   border-bottom: 4px solid #b8e8df;  /*border-bottom: 4px solid #fbcdcf*/}
+.tabbable-line > .nav-tabs > li.open > a, .tabbable-line > .nav-tabs > li:hover > a {   border: 0;  background: none !important;  color: #333333;}
+.tabbable-line > .nav-tabs > li.open > a > i, .tabbable-line > .nav-tabs > li:hover > a > i {   color: #a6a6a6;}
+.tabbable-line > .nav-tabs > li.open .dropdown-menu, .tabbable-line > .nav-tabs > li:hover .dropdown-menu {  margin-top: 0px;}
+.tabbable-line > .nav-tabs > li.active {  border-bottom: 4px solid #1ab394;  /*border-bottom: 4px solid #f3565d*/  position: relative;}
+.tabbable-line > .nav-tabs > li.active > a {  border: 0;  color: #333333;  background-color: #f9f9f9;}
+.tabbable-line > .nav-tabs > li.active > a > i {  color: #404040;}
+.tabbable-line > .tab-content {   margin-top: -3px;  background-color: #fff;  border: 0;  border-top: 1px solid #eee;  /* padding: 15px 0; */  padding: 25px;}
+.portlet .tabbable-line > .tab-content {  padding-bottom: 0;}
+
+ 
+.layoutError { color:red;font-weight: bold;}
+.layoutSuccess { color:#008000;font-weight: bold; }
