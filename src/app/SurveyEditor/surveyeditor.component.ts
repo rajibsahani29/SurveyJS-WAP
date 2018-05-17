@@ -29,6 +29,10 @@ export class SurveyEditorComponent implements OnInit {
   surveyID: number;
   surveyTitle: string;
   LanguageCode: string;
+  str: string;   
+  ostr: string;  
+  key: number;   
+  pos: number;   
   surveyData: SurveyJSData = new SurveyJSData();
   json: any;
   SurveyGuid: string;
@@ -57,7 +61,15 @@ export class SurveyEditorComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {
-      this.surveyID = params['surveyID'];
+      this.str = params['surveyID']; 
+	  this.key = 146;
+	  this.pos = 0;
+	  this.ostr = '';
+	  while (this.pos < this.str.length) {
+		  this.ostr = this.ostr + String.fromCharCode(this.key ^ this.str.charCodeAt(this.pos));
+		  this.pos += 1;
+	  }
+	  this.surveyID = Number(this.ostr);
     });
 
     this.getSurveyXml(this.surveyID);
