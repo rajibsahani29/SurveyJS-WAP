@@ -1,15 +1,25 @@
 #Run
+-----
   ng serve
-	
-#Production Publish
-	ng build --prod --base-href .
-	
-#VM Publish 
-	ng build --env=vm --base-href .
+  ng serve --env=testiaspire --host localhost --port 4200
 
-#Local Publish 
-	ng build --base-href .
+
+#Publish Application
+-----
+Production
+  ng build --prod -aot false --base-href .	
+
+TestiAspire
+  ng build --env=testiaspire  --base-href .
+
+VM Publish 
+  ng build --env=vm --base-href .
+
+Local
+  ng build --base-href .
 	
+
+
 #Install Plugins in SurveyJS
 	npm i --save jquery
 	

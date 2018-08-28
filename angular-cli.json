@@ -27,10 +27,11 @@
       "environmentSource": "environments/environment.ts",
 	  "environments": {
 	    "dev": "environments/environment.ts",
-        "source": "environments/environment.ts",
+		"source": "environments/environment.ts",
         "prod": "environments/environment.prod.ts",
-        "vm": "environments/environment.vm.ts",
-		"vm1": "environments/environment.vm1.ts"
+		"v3": "environments/environment.v3.ts",
+		"testiaspire": "environments/environment.testiaspire.ts",
+        "vm": "environments/environment.vm.ts"
 	  }
     }
   ],

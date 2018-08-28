@@ -1,8 +1,8 @@
 export const environment = {
   production: true,
-  ApiUrl:'iaspire.iaspireapp.com/',
+  ApiUrl:'iaspire.azurewebsites.net/',
   ApiPath: 'WebAPI/api/',
-  WapUrl:'iaspire.iaspireapp.com/',
+  WapUrl:'iaspire.azurewebsites.net/',
   WapPath:'WAP/'
  
 };
