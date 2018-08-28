@@ -819,6 +819,40 @@ export class SurveyEditorDirectiveComponent implements OnChanges {
                         if (inputType == 'text' && question.placeHolder && question.placeHolder != "") {
                             //EDIT CODE FOR PRESURVEY
                             var arrDefaultTexts = (question.placeHolder + "").split(',');
+                            
+                            var itemMax = Math.max(arrDefaultTexts.length, returnValue.Answer.length);
+                            for (let i = 0; i < itemMax; i++) {
+                                if (i < arrDefaultTexts.length) {
+                                    if(i >= returnValue.Answer.length) {
+                                        let answer1: NAnswer = {} as any;
+                                        answer1._OprationType = 'add';
+                                        answer1.DefaultText = (arrDefaultTexts[i] + "").trim();
+                                        if (i == 0) {
+                                            answer1.AnswerTypeId = new NSurveyLogic().getAnswerTypeIdByType('text');
+                                        }
+                                        else {
+                                            answer1.AnswerTypeId = new NSurveyLogic().getAnswerTypeIdByType('hidden');
+                                        }
+                                        returnValue.Answer.push(answer1);
+                                    }
+                                    else {
+                                        if (i == 0) {
+                                            returnValue.Answer[i].AnswerTypeId = new NSurveyLogic().getAnswerTypeIdByType('text');
+                                        }
+                                        else {
+                                            returnValue.Answer[i].AnswerTypeId = new NSurveyLogic().getAnswerTypeIdByType('hidden');
+                                        }
+                                        returnValue.Answer[i].DefaultText = (arrDefaultTexts[i] + "").trim();
+                                        returnValue.Answer[i]._OprationType = 'edit';
+                                    }
+                                }
+                                else {
+                                    returnValue.Answer[i]._OprationType = 'delete';
+                                }
+                            }
+
+
+                            /*
                             for (let i = 0; i < returnValue.Answer.length; i++) {
                                 if (i < arrDefaultTexts.length) {
                                     if (i == 0) {
@@ -847,6 +881,7 @@ export class SurveyEditorDirectiveComponent implements OnChanges {
                                     returnValue.Answer.push(answer1);
                                 }
                             }
+                            */
                         }
                         else {
                             returnValue.Answer.forEach(ans => {
